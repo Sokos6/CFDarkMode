@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import { Ripple } from '@progress/kendo-react-ripple';
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
 import { Input } from '@progress/kendo-react-inputs';
 import { Button } from '@progress/kendo-react-buttons';
@@ -88,12 +88,12 @@ class App extends Component {
               <Dialog title={"Share this report"} oncClose={this.handleShare}>
                 <p>Please enter the email address of the recepient</p>
                 <Input placeholder="example.motus.com" />
-                <DiaglogActionsBar>
+                <DialogActionsBar>
                   <Button primary={true} onClick={this.handleShare}>
                     Share
                   </Button>
                   <Button onClick={this.handleShare}>Cancel</Button>
-                </DiaglogActionsBar>
+                </DialogActionsBar>
               </Dialog>
             )}
           </div>
