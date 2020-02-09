@@ -11,24 +11,36 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.appContainer = React.createRef();
+    this.state = {
+      showDialogue: false
+    };
   }
 
   handlePDFExport = () => {
     savePDF(ReactDOM.findDOMNode(this.appContainer), { paperSize: "auto" });
   };
 
+  handleShare = () => {
+    this.setState({
+      showDialog: !this.state.showDialogue
+    }, () => console.log(this.state));
+  };
+
   render() {
     return (
       <Ripple>
         <div className="bootstrap-wrapper">
-          <div className="app-container container">
+          <div
+            className="app-container container"
+            ref={el => (this.appContainer = el)}
+          >
             <div className="row">
               <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <h1>Sales | 02 2020</h1>
               </div>
               <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 buttons-right">
-                <Button primary={true}>Share</Button>
-                <Button>Export to PDF</Button>
+                <Button primary={true} onClick={this.handleShare}>Share</Button>
+                <Button onClick={this.handlePDFExport}>Export to PDF</Button>
               </div>
             </div>
             <div className="row">
