@@ -14,7 +14,7 @@ import {
 
 import { barChartQ4Months, barChartMonthlyPercentages } from '../data/appData';
 
-const BarChartContainer = () => (
+export const BarChartContainer = () => (
   <Chart style={{ height: 288 }}>
     <ChartLegend visible={false} />
     <ChartCategoryAxis>
@@ -22,7 +22,13 @@ const BarChartContainer = () => (
     </ChartCategoryAxis>
     <ChartSeries>
       {barChartMonthlyPercentages.map((item, idx) => (
-        <ChartSeriesItem key={idx} type='column' data={item.name} gap={2} />
+        <ChartSeriesItem
+          key={idx}
+          type='column'
+          data={item.data}
+          name={item.name}
+          gap={2}
+        />
       ))}
     </ChartSeries>
     <ChartValueAxis skip={4}>
@@ -30,5 +36,3 @@ const BarChartContainer = () => (
     </ChartValueAxis>
   </Chart>
 );
-
-export default BarChartContainer;
